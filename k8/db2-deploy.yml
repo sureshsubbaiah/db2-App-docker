@@ -1,0 +1,31 @@
+--- 
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  labels: 
+    app: db2
+  name: db2-deployment
+spec: 
+  replicas: 2
+  selector: 
+    matchLabels: 
+      app: db2
+  template: 
+    metadata: 
+      labels: 
+        app: db2
+    spec: 
+      spec: 
+      containers: 
+      - name: db2
+        image: "sureshskit/db2:latest"
+        command: ["/entrypoint.sh","db2start"]
+        env: 
+        - name: DB2INST1_PASSWORD
+          value: "thisisthepwd"
+        - name: LICENSE
+          value: "accept"
+        ports: 
+        - containerPort: 50000
+      imagePullSecrets: 
+      - name: regcred
