@@ -1,4 +1,4 @@
-# sample.docker.db2
+# 
 
 Samples for deploying a web application that talks to a DB2 database, using Docker-Compose across multiple Docker machines
 
